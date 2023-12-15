@@ -1,0 +1,3 @@
+here class A have one method walk() with public
+and class B have one method walk() without public
+and compiler giving the error.
