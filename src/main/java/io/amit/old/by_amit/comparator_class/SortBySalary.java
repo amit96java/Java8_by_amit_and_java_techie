@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class SortBySalary implements Comparator<Customer> {
-    @Override
-    public int compare(Customer o1, Customer o2) {
-        return o1.salary - o2.salary;
-    }
+public class SortBySalary /*implements Comparator<Customer>*/ {
+//    @Override
+//    public int compare(Customer o1, Customer o2) {
+//        return o1.salary - o2.salary;
+//    }
 
 
     public static void main(String[] args) {

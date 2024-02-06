@@ -9,6 +9,7 @@ public class ListDemo {
         names.add("rahul");
         names.add("aman");
 
+        ListIterator<String> iterator = names.listIterator();
 
 
 
