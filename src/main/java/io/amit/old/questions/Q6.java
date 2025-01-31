@@ -5,8 +5,6 @@ package io.amit.old.questions;
  *  for extension but closed for modification.
  */
 
-
-
 // Base class
 abstract class Shape {
     abstract double area();

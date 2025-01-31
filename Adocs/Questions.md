@@ -7,3 +7,4 @@
 7) Solid-L Liskov Substitution Principle
 8) Solid-I Interface Segregation Principle (ISP)
 9) Solid-D Dependency Inversion Principle
+10) Generate and consume data using flux
