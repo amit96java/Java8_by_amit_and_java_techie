@@ -32,6 +32,7 @@ public class Q10 {
                     for (int i = 1; i <= 76 && !fluxSink.isCancelled(); i++) {
 //                        System.out.println("downstream request :: "+fluxSink.requestedFromDownstream());
                         if(fluxSink.requestedFromDownstream() <= maxBufferSize && fluxSink.requestedFromDownstream() != 0) {
+                            System.out.println("Thread with publisher "+Thread.currentThread().getName());
                             System.out.println("downstream request :: "+fluxSink.requestedFromDownstream());
                             fluxSink.next(i);
                             System.out.println("Pushed : "+i);
@@ -48,7 +49,8 @@ public class Q10 {
         flux
                 .doOnRequest(num -> System.out.println("requestt ::::: "+num) )
                 .limitRate(maxBufferSize, 25)
-                .publishOn(Schedulers.boundedElastic())
+//                .publishOn(Schedulers.boundedElastic())
+                .publishOn(Schedulers.newParallel("p-Thread", 3))
                 .doOnNext(i -> {
                     sleep(1000);
                 }).subscribe(subscriber());

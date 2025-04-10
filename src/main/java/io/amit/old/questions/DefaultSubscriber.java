@@ -24,7 +24,7 @@ public class DefaultSubscriber implements Subscriber<Object> {
 
     @Override
     public void onNext(Object o) {
-        System.out.println(name + "Receiveddd : "+ o);
+        System.out.println("Thread "+Thread.currentThread().getName()+" "+name + "Receiveddd : "+ o);
     }
 
     @Override
