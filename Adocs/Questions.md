@@ -16,4 +16,5 @@
 12) Given a String ("hello jake, how are you?") , convert to Camel Case.
 13) Implement an algorithm to check if a string has all unique characters.
         String[] words = {"abcde", "hello", "apple", "kite", "padle"}
-14) 
+14) find max sum in given array:
+    ![img.png](img.png)
