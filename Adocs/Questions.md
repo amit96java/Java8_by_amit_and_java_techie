@@ -18,3 +18,9 @@
         String[] words = {"abcde", "hello", "apple", "kite", "padle"}
 14) find max sum in given array:
     ![img.png](img.png)
+15) print lucky string (delloite)
+    divide the string until it is not devidable
+    Example: fourhead
+    four || head
+    fo || ur || he || ad
+
