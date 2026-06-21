@@ -45,5 +45,5 @@ class NonFlyingBird extends Bird {
 
 
 
-public class Q7 {
+public class Q5_SOL {
 }

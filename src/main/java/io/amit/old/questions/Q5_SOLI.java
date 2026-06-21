@@ -30,5 +30,5 @@ class SimplePrinter implements Printer {
 }
 
 
-public class Q8 {
+public class Q5_SOLI {
 }

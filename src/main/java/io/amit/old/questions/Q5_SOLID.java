@@ -34,7 +34,7 @@ class Notification {
 
 
 // Main method to demonstrate dependency injection
-public class Q9 {
+public class Q5_SOLID {
 
     public static void main(String[] args) {
         MessageService service = new EmailService();

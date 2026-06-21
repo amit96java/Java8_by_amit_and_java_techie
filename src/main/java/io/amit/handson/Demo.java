@@ -8,23 +8,48 @@ import java.util.List;
 public class Demo {
 
     public static void main(String[] args) {
-        String str =  "fourhead";
-        splitString(str);
-    }
-
-    public static void splitString(String str) {
-        if(str.length() <= 1) {
-            return;
+        Integer nums[] = new Integer[] {2, 34, 671, 15};
+        int sum = 0;
+        int temp = 0;
+        for (int i = 0; i< nums.length; i++) {
+            for(int j=0; j<nums.length; j++) {
+                int num = nums[j];
+                if(i == j) {
+                    num = reverseNum(num);
+                }
+                sum = sum + num;
+            }
+            if(sum > temp) {
+                temp = sum;
+            }
+            sum = 0;
         }
-        int mid = str.length()/2;
+        System.out.println("max sum is "+temp);
 
-        String left = str.substring(0, mid);
-        String right = str.substring(mid, str.length());
+//        System.out.println("rev "+reverseNum(123));
 
-        System.out.println(left+"::"+right);
-        splitString(left);
-        splitString(right);
     }
+
+    private static int reverseNum(int num) {
+        List<Integer> digits = new ArrayList<>();
+
+        while (num > 0) {
+            int digit = num%10;
+            num = num/10;
+            digits.add(digit);
+            System.out.println("num is "+num);
+        }
+        int reverseNum = 0;
+        for(int n: digits) {
+            reverseNum = reverseNum*10 + n;
+        }
+        return reverseNum;
+    }
+
+
+
+
+
 
 
 

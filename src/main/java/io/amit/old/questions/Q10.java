@@ -1,61 +1,64 @@
 package io.amit.old.questions;
 
-import org.reactivestreams.Subscriber;
-import reactor.core.publisher.Flux;
-import reactor.core.scheduler.Schedulers;
+import java.util.ArrayList;
+import java.util.List;
 
-import java.util.function.LongConsumer;
-
+/**
+ * Question: 10)
+ *
+ * find max sum in given array and one time only one number can reverse in a loop :
+ *     ![img.png](img.png)
+ *     Example:
+ *     given array is [2, 34, 671, 15]
+ *     Solution:
+ *     [2, 43, 671, 15] || [2, 34, 176, 15] || [2, 34, 671, 51]
+ *     731		   || 227		  || 758
+ *     758 is the answer
+ *     
+ */
 public class Q10 {
-    public static void sleep(int millsec) {
-        try {
-            Thread.sleep(millsec);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void sleepSec(int sec) {
-        sleep(sec * 1000);
-    }
-
-    public static Subscriber<Object> subscriber() {
-        return new DefaultSubscriber();
-    }
-
-
     public static void main(String[] args) {
-        //this example will block producer to wait until queue is free.
-        System.setProperty("reactor.bufferSize.small", "6");
-        int maxBufferSize = 50;
-        Flux<Integer> flux = Flux.create(fluxSink -> {
-                    for (int i = 1; i <= 76 && !fluxSink.isCancelled(); i++) {
-//                        System.out.println("downstream request :: "+fluxSink.requestedFromDownstream());
-                        if(fluxSink.requestedFromDownstream() <= maxBufferSize && fluxSink.requestedFromDownstream() != 0) {
-                            System.out.println("Thread with publisher "+Thread.currentThread().getName());
-                            System.out.println("downstream request :: "+fluxSink.requestedFromDownstream());
-                            fluxSink.next(i);
-                            System.out.println("Pushed : "+i);
-                            sleep(10);
-                        } else {
-//                            System.out.println("else :: "+i);
-                            i = i-1;
-                        }
+        Integer nums[] = new Integer[]{2, 34, 671, 15};
 
-                    }
-                    fluxSink.complete();
-                });
+//      //iterate
+        int totalMaxNum = 0;
+        int dedicatedMaxNum = 0;
+        int temp = 0;
+        for (int i = 0; i< nums.length; i++) {
+            for (int j = 0; j< nums.length; j++) {
+                dedicatedMaxNum = nums[j];
+                if(i == j) {
+                    dedicatedMaxNum = getReverseNum(nums[j]);
+                }
+                totalMaxNum = totalMaxNum +dedicatedMaxNum;
+            }
+            if(totalMaxNum > temp) {
+                temp = totalMaxNum;
+            }
+            totalMaxNum = 0;
+        }
 
-        flux
-                .doOnRequest(num -> System.out.println("requestt ::::: "+num) )
-                .limitRate(maxBufferSize, 25)
-//                .publishOn(Schedulers.boundedElastic())
-                .publishOn(Schedulers.newParallel("p-Thread", 3))
-                .doOnNext(i -> {
-                    sleep(1000);
-                }).subscribe(subscriber());
 
-        sleepSec(60);
+        System.out.println("max num is "+temp);
+
+
+
     }
 
+    private static int getReverseNum(int num) {
+        // get list of digit in a number
+        List<Integer> digits = new ArrayList<>();
+
+        while (num > 0) {
+            digits.add(num % 10); // get last digit
+            num = num / 10;    // remove last digit
+        }
+        System.out.println("digit are "+digits);
+        int maxNum = 0;
+        for (int digit : digits) {
+            maxNum = maxNum * 10 + digit;
+
+        }
+        return maxNum;
+    }
 }

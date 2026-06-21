@@ -1,46 +1,59 @@
 package io.amit.old.questions;
 
-/**
- * Software entities (classes, modules, functions) should be open
- *  for extension but closed for modification.
- */
-
-// Base class
-abstract class Shape {
-    abstract double area();
-}
-
-// Extended classes
-class Circle extends Shape {
-    private double radius;
-
-    public Circle(double radius) {
-        this.radius = radius;
-    }
-
-    @Override
-    double area() {
-        return Math.PI * radius * radius;
-    }
-}
-
-class Rectangle extends Shape {
-    private double width, height;
-
-    public Rectangle(double width, double height) {
-        this.width = width;
-        this.height = height;
-    }
-
-    @Override
-    double area() {
-        return width * height;
-    }
-}
-
-// Adding new shapes without modifying existing ones
-
-
+import org.reactivestreams.Subscriber;
+import reactor.core.publisher.Flux;
+import reactor.core.scheduler.Schedulers;
 
 public class Q6 {
+    public static void sleep(int millsec) {
+        try {
+            Thread.sleep(millsec);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void sleepSec(int sec) {
+        sleep(sec * 1000);
+    }
+
+    public static Subscriber<Object> subscriber() {
+        return new DefaultSubscriber();
+    }
+
+
+    public static void main(String[] args) {
+        //this example will block producer to wait until queue is free.
+        System.setProperty("reactor.bufferSize.small", "6");
+        int maxBufferSize = 50;
+        Flux<Integer> flux = Flux.create(fluxSink -> {
+                    for (int i = 1; i <= 76 && !fluxSink.isCancelled(); i++) {
+//                        System.out.println("downstream request :: "+fluxSink.requestedFromDownstream());
+                        if(fluxSink.requestedFromDownstream() <= maxBufferSize && fluxSink.requestedFromDownstream() != 0) {
+                            System.out.println("Thread with publisher "+Thread.currentThread().getName());
+                            System.out.println("downstream request :: "+fluxSink.requestedFromDownstream());
+                            fluxSink.next(i);
+                            System.out.println("Pushed : "+i);
+                            sleep(10);
+                        } else {
+//                            System.out.println("else :: "+i);
+                            i = i-1;
+                        }
+
+                    }
+                    fluxSink.complete();
+                });
+
+        flux
+                .doOnRequest(num -> System.out.println("requestt ::::: "+num) )
+                .limitRate(maxBufferSize, 25)
+//                .publishOn(Schedulers.boundedElastic())
+                .publishOn(Schedulers.newParallel("p-Thread", 3))
+                .doOnNext(i -> {
+                    sleep(1000);
+                }).subscribe(subscriber());
+
+        sleepSec(60);
+    }
+
 }

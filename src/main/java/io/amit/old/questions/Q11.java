@@ -1,6 +1,15 @@
 package io.amit.old.questions;
 
-public class Q15 {
+/**
+ * Question: 11)
+ * print lucky string (delloite)
+ *     divide the string until it is not devidable
+ *     Example: fourhead
+ *     four || head
+ *     fo || ur || he || ad
+ *
+ */
+public class Q11 {
 
     public static void main(String[] args) {
         String str =  "fourhead";
