@@ -35,5 +35,5 @@ class EmployeeRepository {
 }
 
 
-public class Q5 {
+public class Q5_S {
 }

@@ -4,29 +4,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.BinaryOperator;
+
+
 
 public class Demo {
 
     public static void main(String[] args) {
-        Integer nums[] = new Integer[] {2, 34, 671, 15};
-        int sum = 0;
-        int temp = 0;
-        for (int i = 0; i< nums.length; i++) {
-            for(int j=0; j<nums.length; j++) {
-                int num = nums[j];
-                if(i == j) {
-                    num = reverseNum(num);
-                }
-                sum = sum + num;
-            }
-            if(sum > temp) {
-                temp = sum;
-            }
-            sum = 0;
-        }
-        System.out.println("max sum is "+temp);
+        BinaryOperator<Integer> operator = (x, y) -> {
+            return x+y;
+        };
 
-//        System.out.println("rev "+reverseNum(123));
+        System.out.println(operator.apply(2, 3 ));
 
     }
 
