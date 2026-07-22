@@ -14,7 +14,7 @@
            (from java.util.function package) that takes two arguments of the same type
            and returns a result of the same type. It extends BiFunction<T, T, T>, meaning both 
            input and output must be of the same type. 
-8) Given a String ("hello jake, how are you?") , convert to Camel Case.
+8) Given a String ("hello jake, how are you?") , convert to Camel Case ("Hello Jake, How Are You?").
 9) Implement an algorithm to check if a string has all unique characters.
         String[] words = {"abcde", "hello", "apple", "kite", "padle"} 
 10) find max sum in given array and one time only one number can reverse in a loop :

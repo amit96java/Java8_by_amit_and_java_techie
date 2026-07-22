@@ -16,5 +16,7 @@ dependencies {
     // https://mvnrepository.com/artifact/io.projectreactor/reactor-core
     implementation group: 'io.projectreactor', name: 'reactor-core', version: '3.7.2'
 
+    implementation 'org.apache.activemq:activemq-all:5.18.3'
+
 
 }

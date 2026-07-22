@@ -5,18 +5,18 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.BinaryOperator;
-
+import java.util.stream.Collectors;
 
 
 public class Demo {
 
     public static void main(String[] args) {
-        BinaryOperator<Integer> operator = (x, y) -> {
-            return x+y;
-        };
-
-        System.out.println(operator.apply(2, 3 ));
-
+        String s = "hello jake, how are you?";
+        String collect = Arrays.asList(s.split(" "))
+                .stream()
+                .map(word -> Character.toUpperCase(word.charAt(0)) + word.substring(1).toLowerCase())
+                .collect(Collectors.joining(" "));
+        System.out.println("co "+collect);
     }
 
     private static int reverseNum(int num) {
