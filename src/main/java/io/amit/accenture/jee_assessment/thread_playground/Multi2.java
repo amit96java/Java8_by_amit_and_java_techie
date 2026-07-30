@@ -8,6 +8,6 @@ public class Multi2 extends Thread{
     public static void main(String[] args) {
         Multi2 t = new Multi2();
         t.start();
-        t.start();
+        t.start(); //IllegalThreadStateException
     }
 }
