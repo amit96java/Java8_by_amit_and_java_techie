@@ -32,3 +32,7 @@
     four || head
     fo || ur || he || ad
 
+12) Find location of 50 Using Binary Search in given array
+    [10, 20, 30, 40, 50, 60, 70]
+    Binary Search only beneficial when array is sorted.
+
