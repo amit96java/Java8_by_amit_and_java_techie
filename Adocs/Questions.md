@@ -1,6 +1,6 @@
-1) reverse number using simple java and stream and Collections.reverse.
-2) sort using simple java and stream and comparable.
-3) find second max salary or nth max.
+1) reverse number using simple java and stream and Collections.reverse. (Global Logic)
+2) sort using simple java and stream and comparable. (Global Logic)
+3) find second max salary or nth max. (Mindtree)
 4) There is list of names and process each name using separate thread using CompletableFuture.
 5) Solid principles:
    5) Solid-S Single Responsibility Principle 
@@ -14,8 +14,8 @@
            (from java.util.function package) that takes two arguments of the same type
            and returns a result of the same type. It extends BiFunction<T, T, T>, meaning both 
            input and output must be of the same type. 
-8) Given a String ("hello jake, how are you?") , convert to Camel Case ("Hello Jake, How Are You?").
-9) Implement an algorithm to check if a string has all unique characters.
+8) Given a String ("hello jake, how are you?") , convert to Camel Case ("Hello Jake, How Are You?"). (Visa)
+9) Implement an algorithm to check if a string has all unique characters. (Visa)
         String[] words = {"abcde", "hello", "apple", "kite", "padle"} 
 10) find max sum in given array and one time only one number can reverse in a loop :
     ![img.png](img.png)
@@ -31,8 +31,9 @@
     Example: fourhead
     four || head
     fo || ur || he || ad
+    f || o || u || r || h || e || a || d
 
-12) Find location of 50 Using Binary Search in given array
+12) Find location of 50 Using Binary Search in given array (Visa)
     [10, 20, 30, 40, 50, 60, 70]
     Binary Search only beneficial when array is sorted.
 

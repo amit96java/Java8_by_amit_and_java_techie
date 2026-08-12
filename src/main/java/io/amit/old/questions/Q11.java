@@ -18,7 +18,7 @@ public class Q11 {
 
     public static void splitString(String str) {
         // If length is odd or 1, stop
-        if (str.length() <= 1 || str.length() % 2 != 0) {
+        if (str.length() <= 1 ) {
             return;
         }
 
