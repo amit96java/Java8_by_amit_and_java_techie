@@ -2,11 +2,15 @@ package io.amit.old.questions;
 
 
 /**
+ *
+ * Liskov Substitution Principle
+ *
  * Subtypes must be substitutable for their base types without altering the
  * correctness of the program.
  */
 
 
+// Issue: Ostrich can not fly but child class ABird enforcing to implement fly() method.
 
 class ABird {
     public void fly() {
@@ -25,20 +29,34 @@ class Ostrich extends ABird {
     }
 }
 
-// Better approach
+// Solution: Use Flyable interface with  Sparrow and not use with Ostrich
+
 abstract class Bird {
     abstract void move();
 }
 
-class FlyingBird extends Bird {
+interface Flyable {
+    void fly();
+}
+
+class Sparrow1 extends Bird implements Flyable {
+
+    @Override
     public void move() {
-        System.out.println("Flying");
+        System.out.println("Sparrow is moving");
+    }
+
+    @Override
+    public void fly() {
+        System.out.println("Sparrow is flying");
     }
 }
 
-class NonFlyingBird extends Bird {
+class Ostrich1 extends Bird {
+
+    @Override
     public void move() {
-        System.out.println("Walking");
+        System.out.println("Ostrich is walking");
     }
 }
 
